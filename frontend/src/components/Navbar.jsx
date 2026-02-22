@@ -63,6 +63,9 @@ const NavigationBar = () => {
               <Link className="color nav-link" to="/">Home</Link>
             </li>
             <li className="nav-item">
+              <Link className="color nav-link" to="/">Home</Link>
+            </li>
+            <li className="nav-item">
               <Link className="color nav-link" to="/courses">Courses</Link>
             </li>
             <li className="nav-item">
