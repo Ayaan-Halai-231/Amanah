@@ -1,84 +1,69 @@
-import React from "react";
-import Slider from "react-slick";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import API from "../config/api";
+
+// Fallback images for when database is empty
 import slide1 from "../../assets/slider/sliderImg1.jpeg";
 import slide2 from "../../assets/slider/sliderImg2.jpeg";
 import slide3 from "../../assets/slider/sliderImg3.jpeg";
 
+const fallbackSlides = [
+  { image: slide1, heading: "AL-AMANAH TARBIYAH ACADEMY", subtext: "Nurturing Knowledge with Faith" },
+  { image: slide2, heading: "Quality Islamic Education", subtext: "Quran • Sunnah • Modern Learning" },
+  { image: slide3, heading: "Building Future Leaders", subtext: "With Faith & Knowledge" },
+];
+
 const BootstrapSlider = () => {
+  const [slides, setSlides] = useState(fallbackSlides);
+
+  useEffect(() => {
+    fetch(`${API}/api/sliders`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data && data.length > 0) setSlides(data);
+      })
+      .catch(() => {
+        // Keep fallback slides on error
+      });
+  }, []);
+
   return (
     <div
       id="schoolCarousel"
       className="carousel slide"
       data-bs-ride="carousel"
-      data-bs-interval="3000"   // 3 seconds
+      data-bs-interval="3000"
     >
       {/* Indicators */}
       <div className="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#schoolCarousel"
-          data-bs-slide-to="0"
-          className="active"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#schoolCarousel"
-          data-bs-slide-to="1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#schoolCarousel"
-          data-bs-slide-to="2"
-        ></button>
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            data-bs-target="#schoolCarousel"
+            data-bs-slide-to={i}
+            className={i === 0 ? "active" : ""}
+          />
+        ))}
       </div>
 
       {/* Slides */}
       <div className="carousel-inner">
-
-        {/* Slide 1 */}
-        <div className="carousel-item active">
-          <img
-            src={slide1}
-            className="d-block w-100"
-            style={{ height: "450px", objectFit: "cover" }}
-            alt="slide1"
-          />
-          <div className="carousel-caption d-flex flex-column justify-content-center h-100">
-            <h1>AL-AMANAH TARBIYAH ACADEMY</h1>
-            <p>Nurturing Knowledge with Faith</p>
+        {slides.map((s, i) => (
+          <div className={`carousel-item ${i === 0 ? "active" : ""}`} key={s._id || i}>
+            <img
+              src={s.image}
+              className="d-block w-100"
+              style={{ height: "450px", objectFit: "cover" }}
+              alt={s.heading || `slide${i + 1}`}
+            />
+            <div className="carousel-caption d-flex flex-column justify-content-center h-100">
+              {s.heading && <h1>{s.heading}</h1>}
+              {s.subtext && <p>{s.subtext}</p>}
+            </div>
           </div>
-        </div>
-
-        {/* Slide 2 */}
-        <div className="carousel-item">
-          <img
-            src={slide2}
-            className="d-block w-100"
-            style={{ height: "450px", objectFit: "cover" }}
-            alt="slide2"
-          />
-          <div className="carousel-caption d-flex flex-column justify-content-center h-100">
-            <h1>Quality Islamic Education</h1>
-            <p>Quran • Sunnah • Modern Learning</p>
-          </div>
-        </div>
-
-        {/* Slide 3 */}
-        <div className="carousel-item">
-          <img
-            src={slide3}
-            className="d-block w-100"
-            style={{ height: "450px", objectFit: "cover" }}
-            alt="slide3"
-          />
-          <div className="carousel-caption d-flex flex-column justify-content-center h-100">
-            <h1>Building Future Leaders</h1>
-            <p>With Faith & Knowledge</p>
-          </div>
-        </div>
-
+        ))}
       </div>
 
       {/* Controls */}

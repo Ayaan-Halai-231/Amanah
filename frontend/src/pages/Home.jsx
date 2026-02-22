@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "../components/Slider";
 import HomeCourses from "../components/HomeCourses";
+import useSiteAssets from "../hooks/useSiteAssets";
 
 import {
   FaBook,
@@ -14,6 +15,7 @@ import { GrCertificate } from "react-icons/gr";
 export default function Home() {
 
   const [showPopup, setShowPopup] = useState(false);
+  const { img } = useSiteAssets();
 
   useEffect(() => {
     const t = setTimeout(() => setShowPopup(true), 4000);
@@ -107,7 +109,7 @@ export default function Home() {
           {/* RIGHT IMAGE */}
           <div className="col-lg-6 text-center">
             <img
-              src="https://smarthistory.org/wp-content/uploads/2022/01/3343681248_16a178708f_o-scaled.jpg"
+              src={img("home_hero_image", "https://smarthistory.org/wp-content/uploads/2022/01/3343681248_16a178708f_o-scaled.jpg")}
               alt="Islamic learning"
               className="img-fluid rounded shadow"
             />

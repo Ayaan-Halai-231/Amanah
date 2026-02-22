@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import useSiteAssets from "../hooks/useSiteAssets";
 
 const NavigationBar = () => {
   const [query, setQuery] = useState("");
+  const { img } = useSiteAssets();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ const NavigationBar = () => {
         {/* Logo */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img
-            src="/assets/images1.jpeg"
+            src={img("logo", "/assets/images1.jpeg")}
             alt="Logo"
             width="50"
             height="50"

@@ -1,84 +1,85 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import API from "../../config/api";
 
-export default function Enroll(){
+export default function Enroll() {
 
-  const {id}=useParams();
+  const { id } = useParams();
 
-  const courses={
-    1:"QURAN HIFDH",
-    2:"BASIC ARABIC",
-    3:"NOORANI QAIDA"
+  const courses = {
+    1: "QURAN HIFDH",
+    2: "BASIC ARABIC",
+    3: "NOORANI QAIDA"
   };
 
-  const courseName=courses[id] || "Course";
+  const courseName = courses[id] || "Course";
 
   // ⭐ STATE FOR FORM
-  const [form,setForm]=useState({
-    studentName:"",
-    gender:"",
-    dob:"",
-    age:"",
-    fatherName:"",
-    motherName:"",
-    countryCode:"+91",
-    mobile:"",
-    email:"",
-    country:"",
-    city:"",
-    source:""
+  const [form, setForm] = useState({
+    studentName: "",
+    gender: "",
+    dob: "",
+    age: "",
+    fatherName: "",
+    motherName: "",
+    countryCode: "+91",
+    mobile: "",
+    email: "",
+    country: "",
+    city: "",
+    source: ""
   });
 
   // ⭐ HANDLE INPUT CHANGE
-  const handleChange=(e)=>{
-    setForm({...form,[e.target.name]:e.target.value});
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   // ⭐ HANDLE SUBMIT
-  const handleSubmit=async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try{
+    try {
 
-      const res=await fetch("http://localhost:1000/api/enroll",{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
+      const res = await fetch(`${API}/api/enroll`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
         },
-        body:JSON.stringify({
+        body: JSON.stringify({
           ...form,
-          course:courseName
+          course: courseName
         })
       });
 
-      const data=await res.json();
+      const data = await res.json();
 
       alert(data.message || "Enrollment Submitted");
 
       // ⭐ reset form after submit
       setForm({
-        studentName:"",
-        gender:"",
-        dob:"",
-        age:"",
-        fatherName:"",
-        motherName:"",
-        countryCode:"+91",
-        mobile:"",
-        email:"",
-        country:"",
-        city:"",
-        source:""
+        studentName: "",
+        gender: "",
+        dob: "",
+        age: "",
+        fatherName: "",
+        motherName: "",
+        countryCode: "+91",
+        mobile: "",
+        email: "",
+        country: "",
+        city: "",
+        source: ""
       });
 
-    }catch(err){
+    } catch (err) {
 
       alert("Server error");
 
     }
   };
 
-  return(
+  return (
 
     <div className="container py-5">
 
@@ -97,64 +98,64 @@ export default function Enroll(){
 
                 <div className="col-md-6">
                   <label className="form-label">Student Name</label>
-                  <input name="studentName" placeholder="Enter your name" value={form.studentName} onChange={handleChange} required className="form-control"/>
+                  <input name="studentName" placeholder="Enter your name" value={form.studentName} onChange={handleChange} required className="form-control" />
                 </div>
 
                 {/* GENDER */}
                 <div className="col-md-6">
-                    <label className="form-label d-block">Gender</label>
+                  <label className="form-label d-block">Gender</label>
 
-                <div className="form-check form-check-inline">
+                  <div className="form-check form-check-inline">
 
                     <input
-                    type="radio"
-                    name="gender"
-                    value="Male"
-                    checked={form.gender === "Male"}
-                    onChange={handleChange}
-                    className="form-check-input"
-                    required
+                      type="radio"
+                      name="gender"
+                      value="Male"
+                      checked={form.gender === "Male"}
+                      onChange={handleChange}
+                      className="form-check-input"
+                      required
                     />
 
                     <label className="form-check-label">Male</label>
 
-                </div>
+                  </div>
 
-                <div className="form-check form-check-inline">
+                  <div className="form-check form-check-inline">
 
                     <input
-                    type="radio"
-                    name="gender"
-                    value="Female"
-                    checked={form.gender === "Female"}
-                    onChange={handleChange}
-                    className="form-check-input"
+                      type="radio"
+                      name="gender"
+                      value="Female"
+                      checked={form.gender === "Female"}
+                      onChange={handleChange}
+                      className="form-check-input"
                     />
 
                     <label className="form-check-label">Female</label>
 
-                </div>
+                  </div>
 
                 </div>
 
                 <div className="col-md-6">
                   <label>DOB</label>
-                  <input type="date" name="dob" value={form.dob} onChange={handleChange} required className="form-control"/>
+                  <input type="date" name="dob" value={form.dob} onChange={handleChange} required className="form-control" />
                 </div>
 
                 <div className="col-md-6">
                   <label>Age</label>
-                  <input type="number" placeholder="Enter your age" name="age" value={form.age} onChange={handleChange} required className="form-control"/>
+                  <input type="number" placeholder="Enter your age" name="age" value={form.age} onChange={handleChange} required className="form-control" />
                 </div>
 
                 <div className="col-md-6">
                   <label>Father Name</label>
-                  <input name="fatherName" placeholder="Enter your father name" value={form.fatherName} onChange={handleChange} required className="form-control"/>
+                  <input name="fatherName" placeholder="Enter your father name" value={form.fatherName} onChange={handleChange} required className="form-control" />
                 </div>
 
                 <div className="col-md-6">
                   <label>Mother Name</label>
-                  <input name="motherName" placeholder="Enter your mother name" value={form.motherName} onChange={handleChange} required className="form-control"/>
+                  <input name="motherName" placeholder="Enter your mother name" value={form.motherName} onChange={handleChange} required className="form-control" />
                 </div>
 
                 {/* PHONE */}
@@ -167,7 +168,7 @@ export default function Enroll(){
                       name="countryCode"
                       value={form.countryCode}
                       onChange={handleChange}
-                      style={{maxWidth:"95px"}}
+                      style={{ maxWidth: "95px" }}
                       className="form-control"
                     />
 
@@ -185,17 +186,17 @@ export default function Enroll(){
 
                 <div className="col-md-6">
                   <label>Email</label>
-                  <input type="email" placeholder="Enter your email" name="email" value={form.email} onChange={handleChange} required className="form-control"/>
+                  <input type="email" placeholder="Enter your email" name="email" value={form.email} onChange={handleChange} required className="form-control" />
                 </div>
 
                 <div className="col-md-6">
                   <label>Country</label>
-                  <input name="country" placeholder="Enter your country" value={form.country} onChange={handleChange} required className="form-control"/>
+                  <input name="country" placeholder="Enter your country" value={form.country} onChange={handleChange} required className="form-control" />
                 </div>
 
                 <div className="col-md-6">
                   <label>City</label>
-                  <input name="city" placeholder="Enter your city" value={form.city} onChange={handleChange} required className="form-control"/>
+                  <input name="city" placeholder="Enter your city" value={form.city} onChange={handleChange} required className="form-control" />
                 </div>
 
                 <div className="col-12">
@@ -212,7 +213,7 @@ export default function Enroll(){
 
                 <div className="col-12">
                   <label>Selected Course</label>
-                  <input className="form-control bg-light" value={courseName} readOnly/>
+                  <input className="form-control bg-light" value={courseName} readOnly />
                 </div>
 
                 <div className="col-12">

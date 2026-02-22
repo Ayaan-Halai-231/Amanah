@@ -1,33 +1,40 @@
 import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
+import { Readable } from "stream";
 
 dotenv.config();
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+// Explicitly parse CLOUDINARY_URL = cloudinary://API_KEY:API_SECRET@CLOUD_NAME
+const cloudUrl = process.env.CLOUDINARY_URL || "";
+const match = cloudUrl.match(/cloudinary:\/\/(\d+):([^@]+)@(.+)/);
+if (match) {
+  cloudinary.config({
+    cloud_name: match[3],
+    api_key: match[1],
+    api_secret: match[2],
+  });
+} else {
+  console.warn("⚠️  CLOUDINARY_URL not set or invalid");
+}
 
-// Upload to the "amanah" folder in Cloudinary
-export const uploadToCloudinary = async (filePath) => {
-  try {
-    const result = await cloudinary.uploader.upload(filePath, {
-      folder: "amanah",
-      resource_type: "auto",
-    });
-    return result;
-  } catch (error) {
-    console.error("Cloudinary upload error:", error);
-    throw error;
-  }
+// Upload buffer to the "amanah" folder in Cloudinary
+export const uploadToCloudinary = (buffer, folder = "amanah") => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      { folder, resource_type: "auto" },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result);
+      }
+    );
+    Readable.from(buffer).pipe(stream);
+  });
 };
 
-// Delete an image from Cloudinary by public_id
+// Delete from Cloudinary by public_id
 export const deleteFromCloudinary = async (publicId) => {
   try {
-    const result = await cloudinary.uploader.destroy(publicId);
-    return result;
+    return await cloudinary.uploader.destroy(publicId);
   } catch (error) {
     console.error("Cloudinary delete error:", error);
     throw error;
