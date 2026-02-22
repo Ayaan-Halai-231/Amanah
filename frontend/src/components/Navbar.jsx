@@ -16,18 +16,7 @@ const NavigationBar = () => {
     <nav className="navbar navbar-dark navbar-expand-lg overlay-content-navbar">
       <div className="container">
 
-        {/* Logo */}
-        <Link className="navbar-brand d-flex align-items-center" to="/">
-          <img
-            src={img("logo", "/assets/images1.jpeg")}
-            alt="Logo"
-            width="50"
-            height="50"
-            className="me-2 rounded-5"
-          />
-          <span className="color fw-bold">AL-AMANAH TARBIYAH ACADEMY</span>
-        </Link>
-
+       
         {/* Toggle */}
         <button
           className="navbar-toggler"
