@@ -530,3 +530,12 @@ body {
     background:
     radial-gradient(circle at 10% 20%,#e9fff5 0,#ffffff 100%);
     }
+    .overlay-content-navbar input {
+      height: 42px;
+    }
+    
+    @media(max-width:991px){
+      .navbar form{
+        max-width:100% !important;
+      }
+    }

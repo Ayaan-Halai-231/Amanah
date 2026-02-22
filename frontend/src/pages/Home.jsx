@@ -16,6 +16,7 @@ export default function Home() {
 
   const [showPopup, setShowPopup] = useState(false);
   const { img } = useSiteAssets();
+  const address = "Golden store, library road, Kodinar Kodinar. Gir Somnath. Gujarat. India Pin code : 362720"
 
   useEffect(() => {
     const t = setTimeout(() => setShowPopup(true), 4000);
@@ -30,7 +31,7 @@ export default function Home() {
         className="sticky-top text-center py-2 fw-bold"
         style={{ background: "#1f7a63", color: "white", zIndex: 999 }}
       >
-        🎓 Admissions Open • Free Trial Available
+        🎓 Coureses Open • Free Trial Available
       </div>
 
 
@@ -154,6 +155,33 @@ export default function Home() {
         </div>
       )}
 
+
+      {/* ================= MAP SECTION ================= */}
+      <section
+        style={{
+          background:
+            "linear-gradient(135deg,#e6fff9,#f7fffc,#e8f8ff)",
+          padding: "60px 0",
+        }}
+      >
+        <div className="container">
+          <div className="shadow rounded overflow-hidden">
+
+            <iframe
+              title="map"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(
+                address
+              )}&output=embed`}
+              width="100%"
+              height="500"
+              style={{ border: 0 }}
+              loading="lazy"
+            />
+
+          </div>
+        </div>
+      </section>
+
     </>
   );
 }
@@ -269,5 +297,6 @@ function Features() {
       </div>
 
     </section>
+    
   );
 }

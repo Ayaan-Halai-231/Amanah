@@ -16,11 +16,11 @@ const Footer = () => {
             </h6>
 
             <ul className="list-unstyled small lh-lg">
-              <li>Computer Lab</li>
-              <li>Library For Children</li>
+              <li>Moral & Character Development Sessions</li>
+              <li>Arabic Language Sessions</li>
               <li>Counselling For Children</li>
-              <li>Homeopathy Clinic</li>
-              <li>Fire Safety Certificate</li>
+              <li>Female Teachers Available for Girls</li>
+              <li>Courses Certificate</li>
             </ul>
           </div>
 
@@ -31,9 +31,9 @@ const Footer = () => {
             </h6>
 
             <ul className="list-unstyled small lh-lg">
-              <li>Music & Dance</li>
-              <li>Art & Craft</li>
-              <li>Field Trips</li>
+              <li>Tajweed Improvement Classes</li>
+              <li>Dua Memorization</li>
+              <li>Surah Learning Program</li>
             </ul>
           </div>
 
@@ -44,7 +44,7 @@ const Footer = () => {
             </h6>
 
             <p className="fw-semibold mb-1">
-              Amanah Islamic Academy
+              AL-AMANAH TARBIYAH ACADEMY
             </p>
 
             <p className="fst-italic small mb-2">
@@ -52,16 +52,16 @@ const Footer = () => {
             </p>
 
             <p className="small mb-2">
-              📍 Near Sarkhej Roza, Sarkhej–Gandhinagar Highway,<br />
-              Sarkhej, Ahmedabad – 382210, Gujarat, India
+              📍 Golden store, library road, Kodinar. Gir Somnath.<br />
+               Kodinar – 362720, Gujarat, India
             </p>
 
             <p className="small mb-1">
-              📞 079-71012440, 079-71727192
+              📞 96387 84184
             </p>
 
             <p className="small mb-3">
-              <MdEmail /> info@amanahacademy.in
+              <MdEmail /> alamanahtarbiyahacademy@gmail.com
             </p>
 
             {/* Social Icons */}
@@ -95,11 +95,11 @@ const Footer = () => {
         <div className="container d-flex justify-content-between flex-wrap small">
 
           <span className="text-secondary">
-            © 2026 Amanah Islamic Academy
+            © 2026 AL-AMANAH TARBIYAH ACADEMY
           </span>
 
           <span className="text-secondary">
-            Developed by Sufiyan Halai & Ayaan Halai
+            Developed by S.H Infotech
           </span>
 
         </div>

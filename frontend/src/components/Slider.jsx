@@ -4,14 +4,22 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import API from "../config/api";
 
 // Fallback images for when database is empty
-import slide1 from "../../assets/slider/sliderImg1.jpeg";
-import slide2 from "../../assets/slider/sliderImg2.jpeg";
-import slide3 from "../../assets/slider/sliderImg3.jpeg";
-
 const fallbackSlides = [
-  { image: slide1, heading: "AL-AMANAH TARBIYAH ACADEMY", subtext: "Nurturing Knowledge with Faith" },
-  { image: slide2, heading: "Quality Islamic Education", subtext: "Quran • Sunnah • Modern Learning" },
-  { image: slide3, heading: "Building Future Leaders", subtext: "With Faith & Knowledge" },
+  {
+    image: "/assets/slider/sliderImg1.jpeg",
+    heading: "AL-AMANAH TARBIYAH ACADEMY",
+    subtext: "Nurturing Knowledge with Faith"
+  },
+  {
+    image: "/assets/slider/sliderImg2.jpeg",
+    heading: "Quality Islamic Education",
+    subtext: "Quran • Sunnah • Modern Learning"
+  },
+  {
+    image: "/assets/slider/sliderImg3.jpeg",
+    heading: "Building Future Leaders",
+    subtext: "With Faith & Knowledge"
+  }
 ];
 
 const BootstrapSlider = () => {

@@ -4,6 +4,7 @@ import { FiSearch } from "react-icons/fi";
 import useSiteAssets from "../hooks/useSiteAssets";
 
 const NavigationBar = () => {
+
   const [query, setQuery] = useState("");
   const { img } = useSiteAssets();
 
@@ -13,22 +14,24 @@ const NavigationBar = () => {
   };
 
   return (
-    <nav className="navbar navbar-dark navbar-expand-lg overlay-content-navbar">
+    <nav className="navbar navbar-dark navbar-expand-lg overlay-content-navbar py-2">
       <div className="container">
 
-        {/* Logo */}
+        {/* LOGO */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img
             src={img("logo", "/assets/images1.jpeg")}
             alt="Logo"
-            width="50"
-            height="50"
-            className="me-2 rounded-5"
+            width="45"
+            height="45"
+            className="me-2 rounded-circle"
           />
-          <span className="color fw-bold">AL-AMANAH TARBIYAH ACADEMY</span>
+          <span className="color fw-bold small small-sm">
+            AL-AMANAH TARBIYAH
+          </span>
         </Link>
 
-        {/* Toggle */}
+        {/* TOGGLER */}
         <button
           className="navbar-toggler"
           type="button"
@@ -38,45 +41,67 @@ const NavigationBar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
+        {/* COLLAPSE */}
         <div className="collapse navbar-collapse" id="navbarNav">
 
-          {/* 🔍 Search */}
+          {/* CENTER SEARCH (becomes full width on mobile) */}
           <form
-            className="position-relative mx-lg-4 my-2 my-lg-0"
+            className="d-lg-flex mx-lg-4 my-3 my-lg-0 w-100"
+            style={{ maxWidth: "350px" }}
             onSubmit={handleSearch}
-            style={{ maxWidth: "350px", width: "100%" }}
           >
-            <FiSearch className="react-search-icon" />
+            <div className="position-relative w-100">
 
-            <input
-              type="search"
-              className="form-control ps-5 rounded-pill"
-              placeholder="Search..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
+              <FiSearch
+                style={{
+                  position: "absolute",
+                  left: "15px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  opacity: 0.6
+                }}
+              />
+
+              <input
+                type="search"
+                className="form-control ps-5 rounded-pill"
+                placeholder="Search courses..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+
+            </div>
           </form>
 
-          {/* Links */}
-          <ul className="navbar-nav ms-auto">
+          {/* MENU */}
+          <ul className="navbar-nav ms-auto text-center text-lg-start">
+
             <li className="nav-item">
-              <Link className="color nav-link" to="/">Home</Link>
+              <Link className="nav-link color" to="/">Home</Link>
             </li>
+
             <li className="nav-item">
-              <Link className="color nav-link" to="/courses">Courses</Link>
+              <Link className="nav-link color" to="/courses">Courses</Link>
             </li>
+
             <li className="nav-item">
-              <Link className="color nav-link" to="/blogs">Blogs</Link>
+              <Link className="nav-link color" to="/blogs">Blogs</Link>
             </li>
+
             <li className="nav-item">
-              <Link className="color nav-link" to="/about">About</Link>
+              <Link className="nav-link color" to="/about">About</Link>
             </li>
+
             <li className="nav-item">
-              <Link className="color nav-link" to="/contact">Contact</Link>
+              <Link className="nav-link color" to="/contact">Contact</Link>
             </li>
+
             <li className="nav-item">
-              <Link className="color nav-link" to="/testimonials">Testimonials</Link>
+              <Link className="nav-link color" to="/testimonials">
+                Testimonials
+              </Link>
             </li>
+
           </ul>
 
         </div>

@@ -1,6 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaStar, FaRegStar, FaUserCircle } from "react-icons/fa";
-import API from "../config/api";
+
+// ================= DATA =================
+const testimonials = [
+  {
+    name: "Ayat parent",
+    role: "Parent",
+    rating: 5,
+    text:
+      "Alhamdulillah, enrolling my child at Al-Amana Tarbiyah Academy has been one of the best decisions for our family. The online classes are well-organized, and the teachers truly care about both Islamic character and academic growth. I’ve seen my child become more confident in salah, duas, and daily manners. May Allah reward the team for their sincere efforts.",
+    date: "Mar 2, 2025",
+  },
+  {
+    name: "Aafiya parent",
+    role: "Parent",
+    rating: 5,
+    text:
+      "Before joining Al-Amana Tarbiyah Academy, I was shy in class. Now I feel more confident speaking and reading, especially in Quran class. My teachers encourage me and that helps a lot.",
+    date: "Jan 27, 2025",
+  },
+  {
+    name: "Sameeha parent",
+    role: "Parent",
+    rating: 4,
+    text:
+      "I am very happy and satisfied with the quran class. The teacher took extra care to make my daughter comfortable. I was not sure about online classes at first but MashaAllah seeing my daughter how fast she coped with the help of her wonderful teacher made me realize that this was the best decision. My daughter enjoys her classes.",
+    date: "Jan 19, 2025",
+  },
+  {
+    name: "Maria / Inaya",
+    role: "Parent",
+    rating: 5,
+    text:
+      "Alhamdulillah my daughter learns the Quran in a very positive environment with you...she is eager to join the classes as you keep on motivating the kids. You are dedicated and patient with the kids.",
+    date: "Dec 11, 2024",
+  },
+  {
+    name: "Yusuf Ali",
+    role: "Student",
+    rating: 5,
+    text:
+      "Classes are engaging and practical. I appreciate the guidance and supportive environment that encourages growth.",
+    date: "Nov 3, 2024",
+  },
+];
 
 // ⭐ Stars
 const Stars = ({ count }) => (
@@ -40,15 +83,6 @@ const ExpandableText = ({ text }) => {
 
 // ================= MAIN =================
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState([]);
-
-  useEffect(() => {
-    fetch(`${API}/api/testimonials`)
-      .then((r) => r.json())
-      .then(setTestimonials)
-      .catch(console.error);
-  }, []);
-
   return (
     <section className="py-5" style={{ background: "#f7f9f8" }}>
       <div className="container">
@@ -72,7 +106,7 @@ export default function Testimonials() {
         <div className="row g-4">
 
           {testimonials.map((t, i) => (
-            <div key={t._id || i} className="col-lg-4 col-md-6">
+            <div key={i} className="col-lg-4 col-md-6">
 
               <div
                 className="card h-100 border-0 shadow-sm p-4"
@@ -106,20 +140,12 @@ export default function Testimonials() {
                 <ExpandableText text={t.text} />
 
                 {/* DATE */}
-                <small className="text-muted mt-auto">
-                  {new Date(t.createdAt).toLocaleDateString()}
-                </small>
+                <small className="text-muted mt-auto">{t.date}</small>
 
               </div>
 
             </div>
           ))}
-
-          {testimonials.length === 0 && (
-            <div className="text-center text-muted py-5">
-              <h5>No testimonials yet</h5>
-            </div>
-          )}
 
         </div>
 
