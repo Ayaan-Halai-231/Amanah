@@ -19,11 +19,11 @@ export default function FamilyInfographic() {
 
                 <div className="card-body d-flex flex-column justify-content-center">
 
-                  <h4 className="fw-bold text-dark mb-2">
+                  <h4 className="fw-bold mb-2">
                     For Brother & Sister
                   </h4>
 
-                  <p className="text-muted mb-0">
+                  <p className="text-light mb-0">
                     Information about brother and sister.
                   </p>
 
@@ -62,11 +62,11 @@ export default function FamilyInfographic() {
 
                 <div className="card-body d-flex flex-column justify-content-center">
 
-                  <h4 className="fw-bold text-dark mb-2">
+                  <h4 className="fw-bold mb-2">
                     For Kid
                   </h4>
 
-                  <p className="text-dark-50 mb-0">
+                  <p className="text-light mb-0">
                     Information about the child.
                   </p>
 

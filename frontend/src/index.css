@@ -294,28 +294,33 @@ img {
 }
 
 /* SAME HEIGHT */
+
+
+
 .infographic-card{
   min-height:260px;
   padding:60px 30px;
   border-radius:20px;
   transition:0.35s;
   cursor:pointer;
+  color:#fff; /* Make all text white */
 }
 
+/* DARK LEFT CARD */
 .left-card{
-  background: linear-gradient(135deg,#ffe082,#fff8e1);
+  background: linear-gradient(135deg,#3a3d40,#5f6c7b);
 }
 
+/* DARK RIGHT CARD */
 .right-card{
-  background: linear-gradient(135deg,#6bcf63,#e9fbe7);
-  border:1px solid rgba(0,0,0,0.05);
+  background: linear-gradient(135deg,#355c7d,#6c5b7b);
+  border:1px solid rgba(255,255,255,0.05);
 }
-
 
 /* HOVER EFFECT */
 .infographic-card:hover{
   transform: translateY(-8px) scale(1.02);
-  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
 }
 
 .hero-bg{
