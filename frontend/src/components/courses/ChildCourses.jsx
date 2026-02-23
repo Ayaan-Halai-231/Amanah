@@ -161,7 +161,7 @@ export default function QaidaNooraniya() {
               <img
                 src="/assets/1.png"
                 className="img-fluid float-img scroll-zoom"
-                style={{ maxWidth: "460px" }}
+                style={{ width: "100%", maxWidth: "460px" }}
                 alt=""
               />
 

@@ -43,18 +43,19 @@ export default function Home() {
         <div
           style={{
             position: "absolute",
-            top: 20,
-            left: 20,
+            top: "20px",
+            left: "15px",
             background: "#ffcc00",
             padding: "10px 20px",
-            borderRadius: 50,
+            borderRadius: "50px",
             fontWeight: "bold",
             boxShadow: "0 5px 15px rgba(0,0,0,.2)",
+            whiteSpace: "nowrap",
+            maxWidth: "calc(100% - 30px)"
           }}
         >
-          ⭐ FREE TRIAL
-        </div>
-
+  ⭐ FREE TRIAL
+</div>
       </div>
 
 

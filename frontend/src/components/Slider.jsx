@@ -63,12 +63,16 @@ const BootstrapSlider = () => {
             <img
               src={s.image}
               className="d-block w-100"
-              style={{ height: "450px", objectFit: "cover" }}
+              style={{
+                height: "60vh",
+                minHeight: "250px",
+                objectFit: "cover"
+              }}
               alt={s.heading || `slide${i + 1}`}
             />
             <div className="carousel-caption d-flex flex-column justify-content-center h-100">
               {s.heading && <h1>{s.heading}</h1>}
-              {s.subtext && <p>{s.subtext}</p>}
+              {s.subtext && <p >{s.subtext}</p>}
             </div>
           </div>
         ))}

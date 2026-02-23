@@ -62,7 +62,7 @@ export default function CoursePage() {
         </div>
 
         {/* Grid */}
-        <div className="row g-4">
+        <div className="row g-4 mx-0">
 
           {courses.map((course) => (
             <div className="col-lg-4 col-md-6" key={course.id}>
@@ -78,7 +78,6 @@ export default function CoursePage() {
                     style={{
                       height: "200px",
                       objectFit: "cover",
-                      transition: "0.4s"
                     }}
                   />
                 </div>
