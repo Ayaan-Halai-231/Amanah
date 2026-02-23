@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ChildCoursesCard from "./CoursesCard"
+import CoursesCard from "./CoursesCard"
 
 export default function QaidaNooraniya() {
 
@@ -106,7 +106,7 @@ export default function QaidaNooraniya() {
         </div>
       </section>
 
-      <ChildCoursesCard/>
+      <CoursesCard/>
 
       {/* ================= WHAT STUDENTS LEARN ================= */}
       <section className="py-5 fade-in">

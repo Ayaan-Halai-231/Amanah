@@ -34,7 +34,7 @@ export default function KidsCourses() {
     <div className="container py-4 px-lg-5 px-4">
 
       <h3 className="text-center fw-bold mb-4">
-        Kids Courses
+        Courses
       </h3>
 
       <div className="row g-4">

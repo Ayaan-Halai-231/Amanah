@@ -4,7 +4,7 @@ import { FaWhatsapp, FaTimes } from "react-icons/fa";
 function WhatsAppChat() {
   const [show, setShow] = useState(false);
 
-  const phoneNumber = "8160880772";
+  const phoneNumber = "9638784184";
   const message = "Hello, I need help";
 
   // 🔹 Detect Mobile Device
