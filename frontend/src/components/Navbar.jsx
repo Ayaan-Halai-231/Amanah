@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import { FiSearch } from "react-icons/fi";
 import useSiteAssets from "../hooks/useSiteAssets";
+import { Collapse } from "bootstrap";
 
 const NavigationBar = () => {
 
-  const [query, setQuery] = useState("");
   const { img } = useSiteAssets();
+  const navRef = useRef(null);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log("Search:", query);
+  const closeNavbar = () => {
+    if (navRef.current) {
+      const bsCollapse = Collapse.getInstance(navRef.current);
+      if (bsCollapse) {
+        bsCollapse.hide();
+      }
+    }
   };
 
   return (
@@ -42,68 +46,51 @@ const NavigationBar = () => {
         </button>
 
         {/* COLLAPSE */}
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div
+          className="collapse navbar-collapse"
+          id="navbarNav"
+          ref={navRef}
+        >
 
-          {/* CENTER SEARCH (becomes full width on mobile) */}
-          <form
-            className="d-lg-flex mx-lg-4 my-3 my-lg-0 w-100"
-            style={{ maxWidth: "350px" }}
-            onSubmit={handleSearch}
-          >
-            <div className="position-relative w-100">
-
-              <FiSearch
-                style={{
-                  position: "absolute",
-                  left: "15px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  opacity: 0.6
-                }}
-              />
-
-              <input
-                type="search"
-                className="form-control ps-5 rounded-pill"
-                placeholder="Search courses..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-
-            </div>
-          </form>
-
-          {/* MENU */}
           <ul className="navbar-nav ms-auto text-center text-lg-start">
 
             <li className="nav-item">
-              <Link className="nav-link color" to="/">Home</Link>
+              <Link className="nav-link color" to="/" onClick={closeNavbar}>
+                Home
+              </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link color" to="/courses">Courses</Link>
+              <Link className="nav-link color" to="/courses" onClick={closeNavbar}>
+                Courses
+              </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link color" to="/blogs">Blogs</Link>
+              <Link className="nav-link color" to="/blogs" onClick={closeNavbar}>
+                Blogs
+              </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link color" to="/about">About</Link>
+              <Link className="nav-link color" to="/about" onClick={closeNavbar}>
+                About
+              </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link color" to="/contact">Contact</Link>
+              <Link className="nav-link color" to="/contact" onClick={closeNavbar}>
+                Contact
+              </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link color" to="/testimonials">
+              <Link className="nav-link color" to="/testimonials" onClick={closeNavbar}>
                 Testimonials
               </Link>
             </li>
 
           </ul>
-
         </div>
       </div>
     </nav>

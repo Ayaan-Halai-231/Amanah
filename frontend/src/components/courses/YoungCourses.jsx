@@ -33,7 +33,7 @@ export default function NewMuslimCourse() {
 
             <div className="col-lg-6 text-center">
               <img
-                src="/assets/newmuslim.png"
+                src="/assets/courses1.png"
                 alt="New Muslim Course"
                 className="img-fluid rounded-4 shadow"
                 style={{ maxHeight: "420px", objectFit: "cover" }}
