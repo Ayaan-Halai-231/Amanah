@@ -7,7 +7,19 @@ body {
     font-family: 'Poppins', sans-serif;
     background-attachment: fixed;
 }
+html, body {
+  overflow-x: hidden;
+}
 
+.container-fluid,
+.row {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
 .overlay-content {
     position: relative;
     z-index: 1;
