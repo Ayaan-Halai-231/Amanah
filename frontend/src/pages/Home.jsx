@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "../components/Slider";
 import HomeCourses from "../components/HomeCourses";
 import useSiteAssets from "../hooks/useSiteAssets";
+import { Link } from "react-router-dom";
 
 import {
   FaBook,
@@ -39,8 +40,8 @@ export default function Home() {
       <div className="position-relative">
 
         <Slider />
-
-        <div
+        <Link
+          to="/free-trial"
           style={{
             position: "absolute",
             top: "20px",
@@ -50,12 +51,13 @@ export default function Home() {
             borderRadius: "50px",
             fontWeight: "bold",
             boxShadow: "0 5px 15px rgba(0,0,0,.2)",
-            whiteSpace: "nowrap",
-            maxWidth: "calc(100% - 30px)"
+            textDecoration: "none",
+            color: "#000",
+            zIndex: 999
           }}
         >
-  ⭐ FREE TRIAL
-</div>
+          ⭐ FREE TRIAL
+        </Link>
       </div>
 
 
@@ -140,9 +142,9 @@ export default function Home() {
               Book a FREE Quran class for your child today.
             </p>
 
-            <a href="/contact" className="btn btn-success mt-2">
+            <Link to="/free-trial" className="btn btn-success mt-2">
               Book Now
-            </a>
+            </Link>
 
             <div
               className="mt-3 text-muted"

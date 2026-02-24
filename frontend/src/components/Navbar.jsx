@@ -29,6 +29,7 @@ const NavigationBar = () => {
             width="45"
             height="45"
             className="me-2 rounded-circle"
+            style={{ width: "52px", height: "52px", }}
           />
           <span className="color fw-bold small small-sm">
             AL-AMANAH TARBIYAH
@@ -39,8 +40,15 @@ const NavigationBar = () => {
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
+          onClick={() => {
+            if (navRef.current) {
+              const bsCollapse =
+                Collapse.getInstance(navRef.current) ||
+                new Collapse(navRef.current, { toggle: false });
+
+              bsCollapse.toggle();
+            }
+          }}
         >
           <span className="navbar-toggler-icon"></span>
         </button>

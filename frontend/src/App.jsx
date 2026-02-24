@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import FreeTrailForm from './components/FreeTrailForm';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -62,6 +63,7 @@ function App() {
           <Route path="/childcourses" element={<ChildCourses />} />
           <Route path="/youngcourses" element={<YoungCourses />} />
           <Route path="/enroll/:id" element={<Enroll />} />
+          <Route path="/free-trial" element={<FreeTrailForm />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />

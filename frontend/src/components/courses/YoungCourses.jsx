@@ -24,7 +24,7 @@ export default function NewMuslimCourse() {
               </p>
 
               <a
-                href="https://wa.me/919999999999"
+                href="https://wa.me/919638784184"
                 className="btn btn-success btn-lg mt-3"
               >
                 Enroll via WhatsApp
@@ -217,7 +217,7 @@ export default function NewMuslimCourse() {
           </p>
 
           <a
-            href="https://wa.me/919999999999"
+            href="https://wa.me/919638784184"
             className="btn btn-light btn-lg mt-3"
           >
             Start Learning Now
